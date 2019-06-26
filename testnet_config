@@ -1,0 +1,135 @@
+{
+    "rpc": {
+        "ip_port": "127.0.0.1:50505"
+    },
+
+    "local": {
+        "local_ip_port": "127.0.0.1:60606"
+    },
+
+    "net": {
+        "node_list": [
+            "127.0.0.1:60607",
+            "127.0.0.1:60608",
+            "127.0.0.1:60609"
+        ],
+
+        "trust_node_list": [
+        ]
+    },
+
+    "genesis": {
+        "timestamp": 1538352000,
+
+        "init_accounts": [
+            {
+                "address": "e53FDEEa7212dc507B81ee90E1b400BB9327bF53",
+                "balance": 80000000000000000
+            },
+            {
+                "address": "6D61d53CCFB98e6C36F185847CE11C9812b0220A",
+                "balance": 1000000000000000
+            },
+            {
+                "address": "cA8A9a58E1cFD6f32fBA46C599a446B3Fde331Ca",
+                "balance": 1000000000000000
+            },
+            {
+                "address": "aFc18De7eAE675f8aADDAf51A9eb4267C451f86a",
+                "balance": 1000000000000000
+            },
+            {
+                "address": "7Dc1c0Acc5C08dDd57d06a4420adE8Fd54206Da1",
+                "balance": 1000000000000000
+            },
+            {
+                "address": "A933381De922dd1AA9bf9b1237545182B7ea12eE",
+                "balance": 2000000000000000
+            },
+            {
+                "address": "e3D8F0e8C9C7FF621C7FDE23aF7b4df700f45C8c",
+                "balance": 2000000000000000
+            },
+            {
+                "address": "EeAde54F500E67ddfEB62c268a8F0b5Fa0AE6aD1",
+                "balance": 0
+            },
+            {
+                "address": "9DfE16ab171d7558a8aF235fF25774eef415314C",
+                "balance": 0
+            },
+            {
+                "address": "e87aF2f914a5c6dDFFc045B56F69bEfa7a73382a",
+                "balance": 0
+            },
+            {
+                "address": "a4C3eb53A36EF5D7dfd3C08565C863bD5e63a788",
+                "balance": 0
+            },
+            {
+                "address": "c110F9C49025B52B7358f54d3E2fF12F60C890D1",
+                "balance": 0
+            },
+            {
+                "address": "d9405142ec5b233f849a631095Cf77963Fdb774f",
+                "balance": 0
+            },
+            {
+                "address": "29a23572675e2164cb0D8EB490c4773152377A0c",
+                "balance": 0
+            }
+        ],
+
+        "init_producers": [
+            {
+                "address": "EeAde54F500E67ddfEB62c268a8F0b5Fa0AE6aD1",
+                "vote": 100
+            },
+            {
+                "address": "9DfE16ab171d7558a8aF235fF25774eef415314C",
+                "vote": 200
+            },
+            {
+                "address": "e87aF2f914a5c6dDFFc045B56F69bEfa7a73382a",
+                "vote": 200
+            },
+            {
+                "address": "a4C3eb53A36EF5D7dfd3C08565C863bD5e63a788",
+                "vote": 300
+            },
+            {
+                "address": "c110F9C49025B52B7358f54d3E2fF12F60C890D1",
+                "vote": 300
+            },
+            {
+                "address": "d9405142ec5b233f849a631095Cf77963Fdb774f",
+                "vote": 400
+            },
+            {
+                "address": "29a23572675e2164cb0D8EB490c4773152377A0c",
+                "vote": 500
+            }
+        ],
+
+        "genesis_block": {
+            "chainID": 256,
+            "producer": "A49C7baBB4C9c46fdEd6b057fE6Ef9E1fd1543Fb",
+            "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "merkle": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "txRoot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "receiptRoot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "number": 0,
+            "timestamp": 1538352000,
+            "extra": "gse-genesis",
+            "signature": "0x435df86f1db7ab8e49ad991a253830f20cb662e732a21167b9a488b24443e23c388594cbd2091109051071f10965eba2011eb348ff41334c6a188cf160fb2ddd01"
+        }
+    },
+
+    "key": {
+        "secret": "62D77A3A935615BDFE63EA09A625945B9567D910571866B7DAB0FFC41920BF13"
+    },
+
+    "node": {
+        "sync": false
+    }
+}

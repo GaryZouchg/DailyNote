@@ -1,0 +1,44 @@
+git clone https://git.sami.int.thomsonreuters.com/contributions-product/trce.git 
+
+git-checkout
+ git-checkout -f
+ git-commit Documentation/ManagementStyle
+ git-log
+
+//Download unzip
+cd
+wget http://kernel.org/pub/software/scm/git/git-1.7.6.tar.bz2
+tar xvfj git-1.7.6.tar.bz2
+cd git-1.7.6
+
+//Install
+./configure
+make
+make install
+
+$ whereis git
+git: /usr/local/bin/git
+$ git --version
+git version 1.7.6
+$ git --help.
+
+git config --global user.name "GIT Admin"
+
+git config --global user.email ramesh@thegeekstuff.com
+$ git config --list
+user.name=GIT Admin
+user.email=ramesh@thegeekstuff.com
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+
+$ cat ~/.gitconfig
+[user]
+        name = GIT Admin
+        email = ramesh@thegeekstuff.com
+
+$ cd /home/ramesh/projects/passworddragon
+
+$ git init
+Initialized empty Git repository in /home/ramesh/projects/passworddragon/.git/

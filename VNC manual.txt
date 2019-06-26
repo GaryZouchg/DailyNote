@@ -1,0 +1,62 @@
+
+Install VNC on Centos 7
+
+Step 1 — Creating Two User Accounts
+sudo useradd -c "User joevnc Configured for VNC Access" joevnc
+sudo passwd joevnc
+
+
+step 2 - Installing GNOME Desktop
+sudo yum groupinstall -y "GNOME Desktop"
+sudo reboot
+
+
+Step 3 — Installing TigerVNC Server
+sudo yum install -y tigervnc-server
+
+
+Step 4 — Configuring VNC Service for Two Clients
+sudo systemctl status vncserver@:.service
+sudo systemctl is-enabled vncserver@.service
+
+sudo ls -l /lib/systemd/system/vnc*
+sudo ls -l /etc/systemd/system/*.wants/vnc*
+sudo cp /lib/systemd/system/vncserver@.service /etc/systemd/system/vncserver@:4.service
+sudo cp /lib/systemd/system/vncserver@.service /etc/systemd/system/vncserver@:5.service
+sudo vi /etc/systemd/system/vncserver@:4.service
+ExecStart=/sbin/runuser -l joevnc -c "/usr/bin/vncserver %i -geometry 1280x1024" 
+PIDFile=/home/joevnc/.vnc/%H%i.pid
+sudo systemctl enable vncserver@:4.service
+sudo systemctl enable vncserver@:5.service
+
+
+Step 5 — Configuring Your Firewall
+sudo firewall-cmd --state
+sudo systemctl start firewalld
+sudo firewall-cmd --permanent --zone=public --add-port=5905/tcp
+sudo firewall-cmd --reload
+
+Step 6 — Setting VNC Passwords
+vncpasswd
+sudo systemctl daemon-reload
+sudo systemctl restart vncserver@:4.service
+sudo systemctl restart vncserver@:5.service
+
+
+Step 7 — Connecting to Remote Desktops with a VNC Client
+ip:5905
+sudo systemctl status vncserver@:4.service
+
+Troubleshooting — VNC Service Crashes
+sudo tail  /var/log/messages
+sudo rm -i /tmp/.X11-unix/X5
+sudo systemctl start vncserver@:5.service
+
+
+Step 8 — Securing VNC Sessions through SSH Tunneling
+username@your_server_ip
+Enable X11 forwarding
+unnels. Type 5900
+your_server_ip:5905.
+
+

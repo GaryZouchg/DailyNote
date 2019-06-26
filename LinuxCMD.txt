@@ -1,0 +1,92 @@
+1. Linux access windows directory
+whereis samba
+smbclient -L //10.35.18.201\ASG_Dev\DCG -U cdguser
+mount -t cifs -o username=cdguser,password=Password123 //10.35.18.201/Share$  /home/changgen/$Winshare 
+
+
+sudo mount -t cifs -o username=UC215030,password=oUae9\&13 //10.35.47.54/SharetoVM  /home/me/mylocalshare
+
+[root@localhost ~]# sudo mount -t cifs -o username=UC215030,password=oUae9\&13 //10.35.47.235/VM003share  /home/changgen/mylocalshare
+(2)????
+  ????????????????,????????????root????/etc/fstab??,?????????????:
+//192.168.0.102/windows-linux /home/lixiang/windows-linux cifs auto,username=lixiangxiang,domain=PC-lixiangxiang,password=???? 0 0
+2. Linux network setup
+ifconfig 
+ip link show
+ifconfig virbr0 down #
+ip link set dev virbr0 up
+Attached to: Bridged Adapter
+
+3. git installing
+yum install git-all
+whereis git
+
+4. boost installing
+4.1 Linuxs
+bzip2 -d boost_1_59_0.tar.bz2
+tar -xvf boost_1_59_0.tar
+boost_1_59_0/
+./bootstrap.sh
+./b2 --help
+sudo ./b2 install --prefix=/usr
+
+sudo ln -s /usr/lib/libboost_system.so.1.59.0 /usr/local/lib/libboost_system.so.1.59.0
+
+find ./ -name "yield.hpp" -print
+4.2 windows
+  bootstrap.bat  //failed  check the log and environment varible ()
+  b2.exe
+call "%VS100COMNTOOLS%"vsvars32.bat
+
+5. NetBeans installing
+
+
+
+7. log4cplus 
+cp ./log4cplus-1.1.2.tar.bz2 ../temp
+cd ../temp
+bzip2 -d ./log4cplus-1.1.2.tar.bz2
+tar -xvf log4cplus-1.1.2.tar
+cd log4cplus-1.1.2/
+./configure CXXFLAGS="-std=c++0x"
+
+make 
+make install
+ldconfig
+./configure --prefix=/usr
+make
+make install
+
+
+8. cryptopp
+svn checkout https://cryptopp.svn.sourceforge.net/svnroot/cryptopp/trunk/c5 cryptopp
+make static dynamic cryptest.exe
+ls *.so *.a *.exe
+sudo make install --prefix=/usr/
+
+9. xsd
+sudo rpm -ivh  xsd-4.0.0-1.x86_64.rpm
+
+10.xercs
+http://xerces.apache.org/xerces-c/download.cgi
+cp ~/mylocalshare/xerces-c-3.1.3.tar.gz ~/temp/
+ tar -xvzf xerces-c-3.1.3.tar.gz
+cd xerces-c-3.1.3
+./configure --prefix=/usr/	
+sudo make install
+
+
+10. (rtr)upa8.0.0.L1.linux.rrg.tar
+ tar -xvf upa8.0.0.L1.linux.rrg.tar
+ copy upa work
+ ksh => sh
+ ./Linxsolink
+  cp -r upa8.0.0.L1.linux.rrg /home/me/Work/trce/upa
+11. curl 
+bzip2 -d ./curl-7.44.0.tar.bz2
+tar -xvf curl-7.44.0.tar
+./configure --prefix=/usr/
+make install
+
+
+
