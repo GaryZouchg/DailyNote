@@ -14,6 +14,7 @@ service sshd status
 生成秘钥对
 ssh me@47.52.33.47
 ssh-keygen -t rsa -b 2048 -f /etc/ssh/ssh_host_rsa_key
+ssh-keygen -t rsa -b 2048  
 
 
 

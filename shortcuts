@@ -29,7 +29,6 @@ command + shift + H        //HOME目录
 command + up               //返回上一层
 
 
-rm -rf /Users/zou/github/gsenetwork/cmake-build-debug/programs/data
 
 
 
