@@ -21,3 +21,6 @@ core.filemode=true
 core.bare=false
 core.logallrefupdates=true
 
+git log
+git remote -v
+git setupstream
