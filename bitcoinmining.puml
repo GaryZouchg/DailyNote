@@ -1,0 +1,51 @@
+@startuml
+
+
+
+collections cli
+
+boundary mining
+
+'actor Bob #red
+
+participant BlockAssembler
+participant CBlockTemplate
+participant CChainState
+
+
+cli->mining : generatetoaddress
+    activate mining
+    mining->mining : generateBlocks
+        activate mining
+        mining->BlockAssembler** : CreateNewBlock
+            activate BlockAssembler
+                BlockAssembler -> CBlockTemplate**: CONSTRUCT
+            deactivate BlockAssembler
+
+        deactivate mining
+        mining->mining : IncrementExtraNonce
+            activate mining
+            deactivate mining
+        mining->mining : CheckProofOfWork
+            activate mining
+            deactivate mining
+        mining->mining : ProcessNewBlock
+            activate mining
+            mining-> mining: CheckBlock
+            mining -> CChainState: AcceptBlock
+                activate CChainState
+                CChainState->CChainState: AcceptBlockHeader
+                    CChainState->CChainState : CheckBlock
+                    CChainState->CChainState : ContextualCheckBlock
+                    CChainState->CChainState : SaveBlockToDisk
+                    CChainState->CChainState : ReceivedBlockTransactions
+                    CChainState->CChainState : FlushStateToDisk
+                    CChainState->CChainState : CheckBlockIndex
+                deactivate CChainState
+            mining -> CChainState: ActivateBestChain
+            deactivate mining
+    deactivate mining
+
+
+
+@enduml

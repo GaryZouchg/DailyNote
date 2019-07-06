@@ -1,0 +1,30 @@
+@startuml
+
+participant Controller
+
+participant BlockChain
+participant ProducerServer
+participant Runtime
+participant GVMThread
+
+Controller->BlockChain: init()
+Controller->BlockChain: start()
+    activate BlockChain
+    BlockChain -> BlockChain: doWork()
+        activate BlockChain
+        BlockChain -> BlockChain: processBlock
+            activate BlockChain
+            BlockChain -> BlockChain: checkBifurcation
+                activate BlockChain
+                BlockChain -> BlockChain: doProcessBlock
+                    activate BlockChain
+                    BlockChain -> BlockChain: doProcessBlock
+                    deactivate BlockChain
+                deactivate BlockChain
+            deactivate BlockChain
+        deactivate BlockChain
+
+    deactivate BlockChain
+
+
+@enduml
