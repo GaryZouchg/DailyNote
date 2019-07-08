@@ -1,0 +1,8 @@
+git clone https://github.com/bitcoin/bitcoin.git
+git tag 选择版本
+
+mallopt函数是用来控制malloc内存分配时的行为的
+locale
+Boost信号/插槽机制
+~/.bitcoin/datadir
+~/.bitcoin/bitcoinf.conf

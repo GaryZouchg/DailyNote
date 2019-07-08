@@ -36,3 +36,5 @@ Your QR Code has been saved as a PNG file path:
  /home/me/shadowsocks_python_qr.png 
 
 
+ps -ef | grep ssserver
+/usr/local/bin/ssserver -c /etc/shadowsocks-python/config.json -d start
