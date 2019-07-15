@@ -1,0 +1,139 @@
+@startuml
+'-----------skin param setting------------------------------------------------------
+skinparam sequenceArrowThickness 2
+skinparam roundCorner 2
+skinparam participantFontSize 10
+  title Peer Connect Sequence Diagram
+hide footbox
+
+'-----------participant declaration---------------------------------------------------------
+participant "net_plugin " as np
+participant "nect_plugi_impl" as npi
+participant "acceptor" as acceptor
+participant "sync_manager" as sync_manager
+participant "msgHandler" as msgHandler
+participant  "dispatch_manager " as dispatcher
+participant  "connection " as conn
+participant  "resolver " as resolver
+participant  "socket " as socket
+control "asio::async"  as async
+note over async #Ivory : <font color=grey size =10>socket
+
+[o->np: startup
+    activate np
+    np->acceptor: open()  set_option()  bind()  listen()
+    np->npi: start_listen_loop
+    activate npi
+        npi->async:async_accept
+    deactivate npi
+    create conn
+async-[#0000FF]>conn: async callback lambda  <<create>>
+    activate conn
+                note right conn #Ivory : <font color=grey size =10>return socket to create connection
+    conn->npi:start_session
+    deactivate conn
+
+
+    np->np: connect
+        activate np
+        'create conn
+        np-->conn: make_shared<connection>(host)
+            activate conn
+            create socket
+            note over socket #Ivory : <font color=grey size =10>io_service
+            conn->socket:<<create socket>>
+            deactivate conn
+np->npi: connect
+       deactivate np
+    deactivate np
+    activate npi
+create resolver
+note over resolver #Ivory : <font color=grey size =10>io_service
+npi->resolver:async_resolver
+    deactivate npi
+
+
+resolver-[#0000FF]>npi: async callback lambda
+    activate npi
+    npi->npi: connect
+        activate npi
+        npi->socket: async_connect
+        deactivate npi
+    deactivate npi
+
+socket-[#0000FF]>npi: async_connect callback lambda
+    activate npi
+    npi->npi: start_session
+        activate npi
+        npi->socket: set_option( nodelay, ec )
+        npi->npi: start_read_message
+            activate npi
+                npi->async:async_read
+            deactivate npi
+        deactivate npi
+
+npi->conn: send_handshake
+    deactivate npi
+    activate conn
+    conn->conn: enqueue
+        activate conn
+        conn->conn: queue_write
+            activate conn
+            conn->conn: do_queue_write
+            conn->async:async_write
+            deactivate conn
+        deactivate conn
+    deactivate conn
+
+async-[#0000FF]>conn:async_write callback lambda
+
+async-[#0000FF]>conn:async_read callback lambda
+    activate conn
+        conn->conn: process_next_messages
+        activate conn
+
+conn->msgHandler: visit
+        deactivate conn
+    deactivate conn
+             activate msgHandler
+
+msgHandler->npi: handle_message \nhandshake_message
+            deactivate msgHandler
+     activate npi
+
+npi->sync_manager:recv_handshake
+    deactivate npi
+    activate sync_manager
+        sync_manager->sync_manager: start_sync
+        activate sync_manager
+            sync_manager->sync_manager: request_next_chunk
+                activate sync_manager
+
+sync_manager->conn:   request_sync_blocks
+                deactivate sync_manager
+        deactivate sync_manager
+    deactivate sync_manager
+    activate conn
+        conn->conn: enqueue
+        activate conn
+
+conn->async: async_write
+      deactivate conn
+  deactivate conn
+
+ async-[#0000FF]>conn:async_read callback lambda
+
+'---------broadcast----------------------------------------------------------------
+[o->npi: accepted_block
+    activate npi
+npi->dispatcher: bcast_block
+    deactivate npi
+    activate dispatcher
+dispatcher->conn:enqueue
+    deactivate dispatcher
+    activate conn
+conn->async: async_write
+    deactivate conn
+
+
+@enduml

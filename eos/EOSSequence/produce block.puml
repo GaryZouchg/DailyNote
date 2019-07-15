@@ -1,0 +1,103 @@
+@startuml
+skinparam sequenceArrowThickness 2
+skinparam roundCorner 2
+skinparam agentBorderColor Green
+skinparam maxmessagesize 50
+'skinparam monochrome reverse
+'skinparam sequenceMessageAlign left
+skinparam participantBorderColor Green
+skinparam participantFontSize 9
+skinparam participantMessageAlign left
+'skinparam backgroundColor #EEEBDC
+'skinparam handwritten true
+
+hide footbox
+title Produce Block Sequence diagram
+participant "producer_plugin.cpp\n producer_plugin " as pp
+participant "producer_plugin.cpp\n producer_plugi_impl" as ppi
+participant "controller.cpp\n controller" as cc
+participant "controller.cpp\n controller_impl" as cci
+participant fork_db
+participant "controller.cpp\n pending_state" as ps
+
+ [o->pp: startup
+activate pp
+    pp->ppi: schedule_production_loop
+activate ppi
+deactivate pp
+
+ppi->ppi: start_block
+    activate ppi
+    ppi->cc: start_block
+
+    activate cc
+    cc ->cci: start_block
+    deactivate cc
+        activate cci
+            cci->ps: block_state()->generate_next()
+            cci->ps: set_confirmed()
+            cci->ps: maybe_promote_pending
+            cci->ps: set_new_producers
+            'create strx
+            cci->cci:  push_transaction \nonblock
+            cci->cci: clear_expired_input_transactions
+        deactivate cci
+    '-----------------------------------------------------------------
+    ppi->cc: push_transaction
+    activate cc
+    cc->cci: push_transaction
+        activate cci
+        deactivate cci
+    deactivate cc
+
+    '--------------------------------------------------------------
+     ppi->cc: get_scheduled_transactions
+     activate cc
+     deactivate cc
+    ppi->cc: push_scheduled_transaction
+    activate cc
+    cc->cci: push_scheduled_transaction
+        activate cci
+        deactivate cci
+    deactivate cc
+    'on_incoming_transaction_async
+    '--------------------------------------------------------------
+    ppi->ppi:on_incoming_transaction_async
+    activate ppi
+        ppi->cc: push_transaction
+        activate cc
+        cc->cci: push_transaction
+            activate cci
+            deactivate cci
+        deactivate cc
+    deactivate ppi
+
+
+
+deactivate ppi
+
+ppi->ppi: mybe_produce_block
+    activate ppi
+     ppi->ppi: produce_block
+        activate ppi
+            ppi->cc:finalize_block
+                activate cc
+                deactivate cc
+            ppi->cc:sign_block
+                activate cc
+                deactivate cc
+            ppi->cc:commit_block
+                activate cc
+                    cc->cci:commit_block
+                        activate cci
+                            create fork_db
+                            cci-->fork_db:add
+                            cci->ps: push
+                        deactivate cci
+                deactivate cc
+        deactivate ppi
+    deactivate ppi
+deactivate ppi
+
+
+@enduml

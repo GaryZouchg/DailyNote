@@ -1,0 +1,46 @@
+@startuml
+'-----------skin param setting------------------------------------------------------
+skinparam sequenceArrowThickness 2
+skinparam roundCorner 2
+skinparam agentBorderColor Green
+
+'skinparam monochrome reverse
+'skinparam sequenceMessageAlign left
+skinparam participantBorderColor Green
+skinparam participantFontSize 9
+'-----------title---------------------------------------------------------
+
+hide footbox
+title Receive Confirmation Sequence Diagram
+participant "producer_plugin.cpp\n producer_plugin " as pp
+participant "producer_plugin.cpp\n producer_plugi_impl" as ppi
+participant "controller.cpp\n controller" as cc
+participant "controller.cpp\n controller_impl" as cci
+participant fork_db
+
+[o->ppi: on_incoming_confirmation
+activate ppi
+    ppi->cc: push_confirmation
+deactivate ppi
+    activate cc
+        cc->cci: push_confirmation
+        activate cci
+        rnote right of  cci
+        store confirmation
+        when push block add
+        end rnote
+            create fork_db
+            cci-->fork_db:add
+            cci->cci:maybe_switch_forks
+                activate cci
+                'cci->fork_db: mark_in_current_chain, set_validity
+                deactivate cci
+        cci->cci: emit accepted confirmation
+        'cci->cci: emit confirm_block
+        deactivate cci
+
+[o->ppi: confirm_block
+activate ppi
+    ppi->cc: push_confirmation
+
+@enduml
