@@ -1,8 +1,9 @@
 
 
 
-to do list
-bitcoin 源码学习
+#to do list
+
+bitcoin <br>
 搞清楚GSE 的 p2p 网络实现
 学习golang etherum   shawdosocks sourcecode
 每周一个设计模式（10个以上）和一个算法
@@ -10,7 +11,9 @@ bitcoin 源码学习
 protobuf,muduo lib 学习
 
 2019.7.4
+
 2019.7.5
+
 eos虚拟机
 
 

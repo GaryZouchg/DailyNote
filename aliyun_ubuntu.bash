@@ -3,7 +3,7 @@
 
 创建用户
 useradd -r -m -s /bin/bash me
-usermod -aG sudo username
+usermod -aG sudo me
 
 安装sshserver
 sudo apt-get install openssh-server
