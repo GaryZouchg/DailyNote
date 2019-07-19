@@ -1,4 +1,17 @@
+
+git clone --recursive  https://github.com/ethereum/aleth.git
+
+git clone --recursive https://github.com/ethereum/aleth.git
+cd aleth
+mkdir build
+cd build
+cmake ..
+make 
+
+
 aleth --ropsten
+
+
 
 
 brew install nodejs
