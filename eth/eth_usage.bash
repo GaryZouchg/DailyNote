@@ -27,7 +27,10 @@ make
      --rpccorsdomain "*" \
      --rpcapi "db,eth,net,web3,personal,admin,miner,shh,txpool,debug" \
       --networkid 100 console
- #    --datadir "C:\MyChains\T1"
+
+./geth attach
+
+
 
 RPC接口调用
 https://github.com/ethereum/wiki/wiki/JSON-RPC 
@@ -45,14 +48,18 @@ curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","metho
 curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"net_version","params":[],"id":67}' http://127.0.0.1:8545
 
 
+
+curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":67}' http://47.52.33.47:8545
+
 #web3 javascript 
 install nodejs
 npm install web3
 npm install solc -g
 solcjs simpleStorage.sol --abi
 solcjs simpleStorage.sol --bin
-
-
+#install nodejs onwindows
+npm install --global --production windows-build-tools
+C:\Windows\System32\WindowsPowerShell\v1.0
 
 solidity  基于web的ide  Remix
           使用clion 安装插件 solcjs编译
