@@ -8,7 +8,7 @@ contract Coin {
     event Sent(address from, address to, uint amount);
 
     // 这是构造函数，只有当合约创建时运行
-    function Coin() public {
+    constructor Coin() public {
         minter = msg.sender;
     }
 

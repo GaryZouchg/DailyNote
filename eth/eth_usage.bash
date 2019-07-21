@@ -7,30 +7,44 @@ cmake ..
 make 
 
 #ehereum golang
+wget https://gethstore.blob.core.windows.net/builds/geth-linux-amd64-1.9.0-52f24617.tar.gz
+sudo apt-get install software-properties-common
+sudo add-apt-repository -y ppa:ethereum/ethereum
+sudo apt-get update
+sudo apt-get install ethereum
 
- wget https://gethstore.blob.core.windows.net/builds/geth-linux-amd64-1.9.0-52f24617.tar.gz
 
 #----------------私有链部署--------------------#
 # 初始化  
 ./geth --identity "myeth" \
-     --networkid 100 init "/home/me/github/DailyNote/eth/mygenesis.json" 
-#    --rpc \
-#    --rpccorsdomain "*" \
-#    --rpcapi "db,eth,net,web3" \
-#    --networkid 100 init "/home/me/github/DailyNote/eth/mygenesis.json" 
+      --rpc \
+     --rpccorsdomain "*" \
+     --rpcapi "db,eth,net,web3,personal,admin,miner,shh,txpool,debug" \
+    --networkid 100 init "/home/me/github/DailyNote/eth/mygenesis.json" 
 #    --datadir "" \
-
+https://github.com/ethereum/go-ethereum/wiki/Command-Line-Options
 # 启动
 
 ./geth  --identity "myeth" \
      --rpc \
      --rpccorsdomain "*" \
      --rpcapi "db,eth,net,web3,personal,admin,miner,shh,txpool,debug" \
-      --networkid 100 console
+
+./geth --identity "myeth" \
+     --rpc \
+     --rpccorsdomain "*" \
+     --rpcapi "db,eth,net,web3,personal,admin,miner,shh,txpool,debug" \
+     --"allow-insecure-unlock" \
+     --networkid 100 console
+     #--unlock '0x4c6cbd2b8428f3ea8257a325258c03b9e9daaf64' 
+     #--password password2.txt"
+
+
 
 ./geth attach
-
-
+$ geth attach ipc:/some/custom/path
+$ geth attach http://191.168.1.1:8545
+$ geth attach ws://191.168.1.1:8546
 
 RPC接口调用
 https://github.com/ethereum/wiki/wiki/JSON-RPC 
@@ -51,22 +65,34 @@ curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","metho
 
 curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":67}' http://47.52.33.47:8545
 
+https://github.com/ethereum/wiki/wiki/JavaScript-API
 #web3 javascript 
 install nodejs
 npm install web3
-npm install solc -g
+sudo npm install solc -g
 solcjs simpleStorage.sol --abi
 solcjs simpleStorage.sol --bin
 #install nodejs onwindows
 npm install --global --production windows-build-tools
 C:\Windows\System32\WindowsPowerShell\v1.0
 
-solidity  基于web的ide  Remix
-          使用clion 安装插件 solcjs编译
+personal.newAccount()
+miner.start()
+eth.accounts
+eth.blockNumber
+eth.getBalance(eth.accounts[0])
+
+personal.unlockAccount(eth.accounts[0])
+amount = web3.toWei(9,'ether')
+eth.sendTransaction({from:eth.accounts[0],to:eth.accounts[1],value:amount})
+
+
+
+["0x26026d6426d8de9b9467afce605635ba9d35f1b4", "0x340e4284712dc8d44322c051fc9523602e4cf971"]
 
 
 
 
 
-
-
+#solidity web IDE
+http://remix.ethereum.org/#optimize=false&evmVersion=null
