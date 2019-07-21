@@ -86,7 +86,8 @@ personal.unlockAccount(eth.accounts[0])
 amount = web3.toWei(9,'ether')
 eth.sendTransaction({from:eth.accounts[0],to:eth.accounts[1],value:amount})
 
-
+myContract = eth.contract(abi)
+contract = myContract.new({from:eth.accounts[0],data:code,gas:1000000})
 
 ["0x26026d6426d8de9b9467afce605635ba9d35f1b4", "0x340e4284712dc8d44322c051fc9523602e4cf971"]
 
