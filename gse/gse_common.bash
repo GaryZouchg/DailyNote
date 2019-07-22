@@ -64,7 +64,7 @@ A48D6402948B6372D13DD0B1644A10BE8C5CDF43C9EF5D41972C60A4C9955A1A	0xCcdFEEAEDf1d3
 
     "net": {
         "node_list": [
-			"127.0.0.1:60606"
+            "127.0.0.1:60606"
             "127.0.0.1:60607",
             "127.0.0.1:60608",
             "127.0.0.1:60609"
@@ -72,23 +72,6 @@ A48D6402948B6372D13DD0B1644A10BE8C5CDF43C9EF5D41972C60A4C9955A1A	0xCcdFEEAEDf1d3
             "127.0.0.1:60611"
             "127.0.0.1:60612"
         ],
-
-cp testnet_config ./testnet_config1
-cp testnet_config ./testnet_config2
-cp testnet_config ./testnet_config3
-cp testnet_config ./testnet_config4
-cp testnet_config ./testnet_config5
-cp testnet_config ./testnet_config6
-cp testnet_config ./testnet_config7
-
-
-cp gsenode testnet_config1 ./NODE1
-cp gsenode testnet_config2 ./NODE2
-cp gsenode testnet_config3 ./NODE3
-cp gsenode testnet_config4 ./NODE4
-cp gsenode testnet_config5 ./NODE5
-cp gsenode testnet_config6 ./NODE6
-cp gsenode testnet_config7 ./NODE7
 
 cd ~/GSE/NODE1
 ./gsenode -c ~/GSE/testnet_config1 -r -p

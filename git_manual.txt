@@ -1,15 +1,6 @@
 
 
 //Download unzip
-cd
-wget http://kernel.org/pub/software/scm/git/git-1.7.6.tar.bz2
-tar xvfj git-1.7.6.tar.bz2
-cd git-1.7.6
-
-//Install
-./configure
-make
-make install
 
 git config --global user.name "GIT Admin"
 git config --global user.email ramesh@thegeekstuff.com
