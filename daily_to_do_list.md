@@ -1,24 +1,30 @@
 
 
+#2019.7.22
+eth交易执行的时序图
+confluence 的部署
+rlp
+
+gse debug
 
 #to do list
 
-bitcoin <br>
-搞清楚GSE 的 p2p 网络实现
-学习golang etherum   shawdosocks sourcecode
-每周一个设计模式（10个以上）和一个算法
-比特币源码学习
-protobuf,muduo lib 学习
-
-2019.7.4
-
-2019.7.5
-
-eos虚拟机
+- 搞清楚GSE 的 p2p 网络实现
+- 学习golang etherum   shawdosocks sourcecode
+- 每周一个设计模式（10个以上）和一个算法
+- 比特币源码学习
+- solidity
+- eth  虚拟机
+- protobuf,muduo lib 学习
+- vim 的使用和快捷方式
 
 
+##2019.7.22
 
-2019.7.4
+
+
+
+#2019.7.4
 浮点数再计算机中是如何表示的
 产快逻辑
 pow具体实现
