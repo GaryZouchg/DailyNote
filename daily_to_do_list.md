@@ -5,6 +5,9 @@ confluence 的部署
 rlp
 gse debug
 
+docker 的熟悉和了解
+合约存储在哪
+多少struct要改
 
 #to do list
 

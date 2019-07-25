@@ -1,23 +1,5 @@
 
 
-mkdir -p ~/GSE/testnet_node
-cp ~/github/gsenetwork/testnet_config ~/GSE/testnet_node/
-cp ~/github/gsenetwork/build/programs/gsenode  ~/GSE/testnet_node/
-
-
-/Users/zou/github/DailyNote/gse_test_config
-./gsenode -c /Users/zou/github/DailyNote/gse_test_config -r -p
-
-rm -rf /Users/zou/github/gsenetwork/cmake-build-debug/programs/data
-
-/Users/zou/github/gsenetwork-cli/build/cmd/gsecli 
-
-
-first bp
-62D77A3A935615BDFE63EA09A625945B9567D910571866B7DAB0FFC41920BF13 
-EeAde54F500E67ddfEB62c268a8F0b5Fa0AE6aD1
-
-
 B080AA05D36D660D7BCD8A31D39B4F107EBCACD2BFD5200A67DAD58699B068E2	e53FDEEa7212dc507B81ee90E1b400BB9327bF53
 
 6829CCBDD058F44A733B77F4A2CCAF49AA6DF0BB0518AEDD2D3797BA2CE38EEA	6D61d53CCFB98e6C36F185847CE11C9812b0220A
@@ -45,6 +27,8 @@ mkdir ~/GSE/NODE7
         "ip_port": "127.0.0.1:50510"
     },
 
+
+
     "local": {
         "local_ip_port": "127.0.0.1:60606"
 62D77A3A935615BDFE63EA09A625945B9567D910571866B7DAB0FFC41920BF13	0xEeAde54F500E67ddfEB62c268a8F0b5Fa0AE6aD1
@@ -64,13 +48,13 @@ A48D6402948B6372D13DD0B1644A10BE8C5CDF43C9EF5D41972C60A4C9955A1A	0xCcdFEEAEDf1d3
 
     "net": {
         "node_list": [
-            "127.0.0.1:60606"
+            "127.0.0.1:60606",
             "127.0.0.1:60607",
             "127.0.0.1:60608",
-            "127.0.0.1:60609"
-            "127.0.0.1:60610"
-            "127.0.0.1:60611"
-            "127.0.0.1:60612"
+            "127.0.0.1:60609",
+            "127.0.0.1:60610",
+            "127.0.0.1:60611",
+            "127.0.0.1:60612",
         ],
 
 cd ~/GSE/NODE1

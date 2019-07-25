@@ -17,8 +17,6 @@ ssh-keygen -t rsa -b 2048 -f /etc/ssh/ssh_host_rsa_key
 ssh-keygen -t rsa -b 2048  
 
 
-
-
 //小飞机服务器
 wget --no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh
 chmod +x shadowsocks-all.sh
@@ -31,10 +29,12 @@ Your Password         :  ouae2718
 Your Encryption Method:  aes-256-cfb 
 
 Your QR Code: (For Shadowsocks Windows, OSX, Android and iOS clients)
- ss://YWVzLTI1Ni1jZmI6bWVANDcuNTIuMzMuNDc6MjAxOQ== 
+ss://YWVzLTI1Ni1jZmI6bWVANDcuNTIuMzMuNDc6MjAxOQ== 
 Your QR Code has been saved as a PNG file path:
- /home/me/shadowsocks_python_qr.png 
+/home/me/shadowsocks_python_qr.png 
 
 
 ps -ef | grep ssserver
 /usr/local/bin/ssserver -c /etc/shadowsocks-python/config.json -d start
+
+

@@ -65,11 +65,26 @@ flush privileges;
 #
 
 wget https://product-downloads.atlassian.com/software/confluence/downloads/atlassian-confluence-6.9.0-x64.bin
-chmod +x
-sudo ./
-Confluence 6.9.0 can be accessed at http://localhost:8090
+chmod +x atlassian-confluence-6.9.0-x64.bin
+sudo ./ atlassian-confluence-6.9.0-x64.bin
+http://localhost:8090
+http://47.52.33.47:8090
 http://139.155.135.91:8090
 
+http://47.52.33.47:8090/uninstall
+wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.47.tar.gz
+
+cp *.jar /home/me/atlassian/confluence/confluence/WEB-INF/lib
+
+
+
+AAABMA0ODAoPeNptkE1PAjEQhu/9FU286KEE6hoWkibi7h7Q/UBBvXipdXZpstuSfhDx11tYiWg4N
+Jl03vedZ+biFT7wvW8xjTClUxpPoxgn6QrT4WiCUrDCyI2TWrFEq7r1oATgyyWYLZirtynOtrz1f
+C9AiYFDkXIHbG8nwzGhNygYHReu5B2whpvdl/Zi3dw2HZftQOgOiZA8CAq5BeaMh/5j6bhxYFjNW
+wvHkKwIpvMpvyQnIbkUoCysdhs4zE+qosiekvksR23fegFj9x6KQrRyoHjYMPvcSLM7WSQmNEKVa
+biStp+ha61Rf4d5yu7GDyvyOKsoyapZQRZxOUHLrGThkXx0PRlHlA7RD03Q5/P0b+tAW/ruHUxVP
+9sAxcjoaDiPs/BGrLmF//f+BlVBmSgwLQIUGzAqHGw15SO0F0k/nkTK4P+TOEcCFQCC+gWeKiT/S
+q5gjSxHrcXf9PMGpA==X02fb
 
 sudo apt-get remove docker docker-engine docker.io containerd runc
 
@@ -92,13 +107,19 @@ udo apt-key fingerprint 0EBFCD88
 docker search mysql
 docker pull mysql:5.7
 
-docker run  -p 3306:3306 
-            --name mymysql 
-            -v $PWD/conf:/etc/mysql/conf.d 
-            -v $PWD/logs:/logs 
-            -v $PWD/data:/var/lib/mysql 
-            -e MYSQL_ROOT_PASSWORD=123456 
+sudo docker run  -p 3306:3306 \
+            --name mymysql \
+            -v $PWD/conf:/etc/mysql/conf.d \
+            -v $PWD/logs:/logs \
+            -v $PWD/data:/var/lib/mysql \
+            -e MYSQL_ROOT_PASSWORD=123456 \
             -d mysql:5.7
+
+e689c66e85f877c492c8ecde2f8a9a84f93f50860a977a90448b1da335b986c7
+
+docker
+
+
 
 
 docker run  --name mysql 
