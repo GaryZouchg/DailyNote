@@ -62,7 +62,7 @@ flush privileges;
 
 
 
-#
+#confluence install
 
 wget https://product-downloads.atlassian.com/software/confluence/downloads/atlassian-confluence-6.9.0-x64.bin
 chmod +x atlassian-confluence-6.9.0-x64.bin
@@ -71,21 +71,19 @@ http://localhost:8090
 http://47.52.33.47:8090
 http://139.155.135.91:8090
 
-http://47.52.33.47:8090/uninstall
 wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.47.tar.gz
+http://47.52.33.47:8090/setup/setupdbtype-start.action
+cp *.jar /opt/atlassian/confluence/confluence/WEB-INF/lib
 
-cp *.jar /home/me/atlassian/confluence/confluence/WEB-INF/lib
+remove confluence
+ /opt/atlassian/confluence/uninstall
+ rm -rf /var/atlassian/confluence
+
+https://raw.githubusercontent.com/Huangdongrong/soft-and-jar-repository/master/confluenceInstall.rar
 
 
 
-AAABMA0ODAoPeNptkE1PAjEQhu/9FU286KEE6hoWkibi7h7Q/UBBvXipdXZpstuSfhDx11tYiWg4N
-Jl03vedZ+biFT7wvW8xjTClUxpPoxgn6QrT4WiCUrDCyI2TWrFEq7r1oATgyyWYLZirtynOtrz1f
-C9AiYFDkXIHbG8nwzGhNygYHReu5B2whpvdl/Zi3dw2HZftQOgOiZA8CAq5BeaMh/5j6bhxYFjNW
-wvHkKwIpvMpvyQnIbkUoCysdhs4zE+qosiekvksR23fegFj9x6KQrRyoHjYMPvcSLM7WSQmNEKVa
-biStp+ha61Rf4d5yu7GDyvyOKsoyapZQRZxOUHLrGThkXx0PRlHlA7RD03Q5/P0b+tAW/ruHUxVP
-9sAxcjoaDiPs/BGrLmF//f+BlVBmSgwLQIUGzAqHGw15SO0F0k/nkTK4P+TOEcCFQCC+gWeKiT/S
-q5gjSxHrcXf9PMGpA==X02fb
-
+#docker mysql
 sudo apt-get remove docker docker-engine docker.io containerd runc
 
 sudo apt-get update
@@ -107,23 +105,53 @@ udo apt-key fingerprint 0EBFCD88
 docker search mysql
 docker pull mysql:5.7
 
-sudo docker run  -p 3306:3306 \
-            --name mymysql \
-            -v $PWD/conf:/etc/mysql/conf.d \
+cd ~/mysql
+sudo docker run -d -p 3306:3306 \
+            --name mysql \
+            -v $PWD/conf:/etc/mysql/ \
             -v $PWD/logs:/logs \
             -v $PWD/data:/var/lib/mysql \
             -e MYSQL_ROOT_PASSWORD=123456 \
-            -d mysql:5.7
+            mysql:5.7
 
-e689c66e85f877c492c8ecde2f8a9a84f93f50860a977a90448b1da335b986c7
+            –character-set-server=utf8 \
+            –character-set-database=utf8 \
 
-docker
+docker run  -d -p 3306:3306      
+            --privileged=true 
+            -v /docker/mysql/conf/my.cnf:/etc/mysql/my.cnf 
+            -v /docker/mysql/data:/var/lib/mysql 
+            -e MYSQL_ROOT_PASSWORD=123456 
+            --name mysqltest2 mysql:5.7
+
+
+-e MYSQL_USER=”fengwei”：添加用户fengwei
+-e MYSQL_PASSWORD=”pwd123”：设置fengwei的密码伟pwd123
+-e MYSQL_ROOT_PASSWORD=”rootpwd123”：设置root的密码伟rootpwd123
+
+–character-set-server=utf8：设置字符集为utf8
+–character-set-database=utf8：设置字符集为utf8
+–collation-server=utf8_general_ci：设置字符比较规则为utf8_general_ci
+
+重启
+docker ps 
+docker kill CONTAINER-ID
+docker start  CONTAINER_ID 
+sudo vim /etc/mysql/conf.d/mysql.cnf
+
+
+backup file 
+139.155.143.215 /root/wikibk/wiki.db.tar.gz  /root/wikibk/attachments.tar.gz
+https://note.youdao.com/ynoteshare1/index.html?id=f6a3df6469cd803cbfde103202e53a89&type=note
 
 
 
+#连接数据库
+mysql -h 47.52.33.47 -u root -p123456
+#创建数据库，然后去前端配置数据库
+create database confluence;
 
-docker run  --name mysql 
-            -d -v /home/black/mysql/conf:/etc/mysql/conf.d 
-            -v /home/black/mysql/data:/var/lib/mysql 
-            -p 3306:3306 
-            -dmysql:5.7.18
+#创建同名表
+use confluence;
+
+CREATE TABLE TABLE_NAME(a int)ENGINE=InnoDB;
