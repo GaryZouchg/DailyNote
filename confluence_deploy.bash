@@ -105,33 +105,30 @@ udo apt-key fingerprint 0EBFCD88
 docker search mysql
 docker pull mysql:5.7
 
-cd ~/mysql
-sudo docker run -d -p 3306:3306 \
+
+https://hub.docker.com/_/mysql
+sudo docker run -p 3306:3306 \
             --name mysql \
-            -v $PWD/conf:/etc/mysql/ \
-            -v $PWD/logs:/logs \
-            -v $PWD/data:/var/lib/mysql \
+            -v /home/me/mysql/conf:/etc/mysql/conf.d \
+            -v /home/me/mysql/data:/var/lib/mysql \
             -e MYSQL_ROOT_PASSWORD=123456 \
-            mysql:5.7
-
-            –character-set-server=utf8 \
-            –character-set-database=utf8 \
-
-docker run  -d -p 3306:3306      
-            --privileged=true 
-            -v /docker/mysql/conf/my.cnf:/etc/mysql/my.cnf 
-            -v /docker/mysql/data:/var/lib/mysql 
-            -e MYSQL_ROOT_PASSWORD=123456 
-            --name mysqltest2 mysql:5.7
+            -d mysql:5.7\
+            --character-set-server=utf8 \
+            --collation-server=utf8_bin
 
 
--e MYSQL_USER=”fengwei”：添加用户fengwei
--e MYSQL_PASSWORD=”pwd123”：设置fengwei的密码伟pwd123
--e MYSQL_ROOT_PASSWORD=”rootpwd123”：设置root的密码伟rootpwd123
 
-–character-set-server=utf8：设置字符集为utf8
-–character-set-database=utf8：设置字符集为utf8
-–collation-server=utf8_general_ci：设置字符比较规则为utf8_general_ci
+
+set character_set_database=utf8;
+set character_set_server=utf8;
+
+
+select @@global.tx_isolation,@@tx_isolation;
+
+mysql> set global transaction isolation level read committed; //全局的
+
+mysql> set session transaction isolation level read committed; //当前会话
+
 
 重启
 docker ps 
@@ -140,8 +137,13 @@ docker start  CONTAINER_ID
 sudo vim /etc/mysql/conf.d/mysql.cnf
 
 
+
+
 backup file 
 139.155.143.215 /root/wikibk/wiki.db.tar.gz  /root/wikibk/attachments.tar.gz
+scp root@139.155.143.215:/root/wikibk/wiki.db.tar.gz ./
+scp root@139.155.143.215:/root/wikibk/attachments.tar.gz ./
+
 https://note.youdao.com/ynoteshare1/index.html?id=f6a3df6469cd803cbfde103202e53a89&type=note
 
 
@@ -155,3 +157,8 @@ create database confluence;
 use confluence;
 
 CREATE TABLE TABLE_NAME(a int)ENGINE=InnoDB;
+
+
+
+
+

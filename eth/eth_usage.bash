@@ -24,10 +24,6 @@ sudo apt-get install ethereum
 https://github.com/ethereum/go-ethereum/wiki/Command-Line-Options
 
 # 启动
-./geth  --identity "myeth" \
-        --rpc \
-        --rpccorsdomain "*" \
-        --rpcapi "db,eth,net,web3,personal,admin,miner,shh,txpool,debug" \
 
 ./geth --identity "myeth" \
        --rpc \
