@@ -137,8 +137,6 @@ docker start  CONTAINER_ID
 sudo vim /etc/mysql/conf.d/mysql.cnf
 
 
-
-
 backup file 
 139.155.143.215 /root/wikibk/wiki.db.tar.gz  /root/wikibk/attachments.tar.gz
 scp root@139.155.143.215:/root/wikibk/wiki.db.tar.gz ./
@@ -152,6 +150,8 @@ https://note.youdao.com/ynoteshare1/index.html?id=f6a3df6469cd803cbfde103202e53a
 mysql -h 47.52.33.47 -u root -p123456
 #创建数据库，然后去前端配置数据库
 create database confluence;
+
+
 
 #创建同名表
 use confluence;
