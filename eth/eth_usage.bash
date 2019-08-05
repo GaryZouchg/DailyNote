@@ -69,6 +69,8 @@ personal.unlockAccount(eth.accounts[0])
 #转账
 amount = web3.toWei(9,'ether')
 eth.sendTransaction({from:eth.accounts[0],to:eth.accounts[1],value:amount})
+eth.getTransaction("0x5a217d185fc3dcc745181b0505d43b556ebaa8e230f35db5c656a58079fde384")
+
 
 #合约部署
 --Coin.sol
@@ -81,7 +83,7 @@ contract = myContract.new({from:eth.accounts[0],data:bin,gas:1000000})
 eth.getBlock(565)
 eth.getTransaction("0xce5687723fa3093bfa72db16a964bb58940b179b35fcf9924d2a8c5c1a69cb01")
 
-0x2ae90e1981b6c3b8c95dc586a5e48e1493972eea
+
 
 #solidity web IDE
 http://remix.ethereum.org/#optimize=false&evmVersion=null

@@ -1,7 +1,4 @@
-
-
-
-{
+  {
     blockHash: "0x6a7d2eeed6796b5ba6f52dcf88adfaaaac5ac56e97753150403d3f4d89ddb013",
     blockNumber: 565,
     from: "0x2ae90e1981b6c3b8c95dc586a5e48e1493972eea",
@@ -17,3 +14,45 @@
     v: "0x1023",
     value: 0
   }
+
+  {
+    blockHash: "0x8fa4a687e7ec99d764133f8ce62cdc80119170f31d18f2b3b7a8b8ee631e113c",
+    blockNumber: 37,
+    from: "0x2ae90e1981b6c3b8c95dc586a5e48e1493972eea",
+    gas: 21000,
+    gasPrice: 1000000000,
+    hash: "0x5a217d185fc3dcc745181b0505d43b556ebaa8e230f35db5c656a58079fde384",
+    input: "0x",
+    nonce: 0,
+    r: "0x2891dd97f66d2beecc1f056000970491836f56b863dd57f2e562968599bc31a3",
+    s: "0x1346bb7c6d52aa2a95c905bcaed60e37ea604a44eb9acad87f8252c158344863",
+    to: "0xcf357f007a0fec4251a85eba53c490f9786f555c",
+    transactionIndex: 0,
+    v: "0x1024",
+    value: 9000000000000000000
+  }
+
+  
+
+transaction
+
+  chain::ChainID    m_chainID;
+  uint32_t  m_type;
+  Address   m_sender;
+  Address   m_recipient;
+  int64_t   m_timestamp;
+  bytes  m_data;
+  uint64_t  m_value;
+  SignatureStruct  m_signature;
+
+
+
+  Address m_address;
+  AccountType m_type = ExternalType;
+  bytes m_code;
+  bool m_alive = false;
+  uint64_t m_balance;
+  int64_t m_timestamp;
+  Addresses m_contractAddresses;
+  uint64_t m_votes;
+  std::map<Address, uint64_t> m_candidates;
