@@ -57,6 +57,8 @@ A48D6402948B6372D13DD0B1644A10BE8C5CDF43C9EF5D41972C60A4C9955A1A	0xCcdFEEAEDf1d3
             "127.0.0.1:60612",
         ],
 
+rm -rf ~/GSE/NODE*/data
+
 cd ~/GSE/NODE1
 ./gsenode -c ~/GSE/testnet_config1 -r -p
 cd ~/GSE/NODE2
@@ -73,6 +75,13 @@ cd ~/GSE/NODE7
 ./gsenode -c ~/GSE/testnet_config7 -r -p
 
 
+
+login -p 62D77A3A935615BDFE63EA09A625945B9567D910571866B7DAB0FFC41920BF13
+
+ transfer -r 0x0552eBEA249d759423608Cd41d200B2d8F99e78d -v 10
+
+
+ transfer -r 0x0552eBEA249d759423608Cd41d200B2d8F99e78d -d "bytecode"-v 10
 
 
 
