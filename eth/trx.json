@@ -42,6 +42,9 @@ transaction
   Address   m_recipient;
   int64_t   m_timestamp;
   bytes  m_data;
+  method
+  params  
+  
   uint64_t  m_value;
   SignatureStruct  m_signature;
 
