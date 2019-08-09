@@ -1,7 +1,6 @@
 #ehereum cpp 
 git clone --recursive https://github.com/ethereum/aleth.git
 
-
 #ehereum golang
 wget https://gethstore.blob.core.windows.net/builds/geth-linux-amd64-1.9.0-52f24617.tar.gz
 sudo apt-get install software-properties-common
@@ -21,15 +20,20 @@ geth   --identity "myeth" \
 https://github.com/ethereum/go-ethereum/wiki/Command-Line-Options
 
 # 启动
-
-geth --identity "myeth" \
+geth   --identity "myeth" \
        --rpc \
        --rpccorsdomain "*" \
        --rpcapi "db,eth,net,web3,personal,admin,miner,shh,txpool,debug" \
        --"allow-insecure-unlock" \
-       --networkid 100 console
+       --networkid 100  &
      #--unlock '0x4c6cbd2b8428f3ea8257a325258c03b9e9daaf64' 
      #--password password2.txt"
+#----------------测试链部署--------------------#
+geth   --testnet \
+       --rpc \
+       --rpccorsdomain "*" \
+       --rpcapi "db,eth,net,web3,personal,admin,miner,shh,txpool,debug" \
+       --"allow-insecure-unlock" 
 
 ./geth attach
 $ geth attach ipc:/some/custom/path
@@ -57,12 +61,11 @@ solcjs simpleStorage.sol --bin
 npm install --global --production windows-build-tools
 
 #console command
-personal.newAccount(1)
+personal.newAccount()
 miner.start(1)
 eth.accounts
 eth.blockNumber
 eth.getBalance(eth.accounts[0])
-eth.getBlock(37)
 
 
 personal.unlockAccount(eth.accounts[0])
@@ -78,13 +81,26 @@ abi=[{"constant":true,"inputs":[],"name":"minter","outputs":[{"name":"","type":"
 bin="0x608060405234801561001057600080fd5b50336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550610436806100606000396000f3fe608060405234801561001057600080fd5b506004361061004c5760003560e01c8063075461721461005157806327e235e31461009b57806340c10f19146100f3578063d0679d3414610141575b600080fd5b61005961018f565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6100dd600480360360208110156100b157600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506101b4565b6040518082815260200191505060405180910390f35b61013f6004803603604081101561010957600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803590602001909291905050506101cc565b005b61018d6004803603604081101561015757600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919080359060200190929190505050610277565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60016020528060005260406000206000915090505481565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161461022557610273565b80600160008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600082825401925050819055505b5050565b80600160003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000205410156102c3576103fd565b80600160003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000828254039250508190555080600160008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600082825401925050819055507f3990db2d31862302a685e8086b5755072a6e2b5b780af1ee81ece35ee3cd3345338383604051808473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001828152602001935050505060405180910390a15b505056fea265627a7a7230582053f7ebdff7cbbd679fbf19b36b9803cef8d9a58cebc0536d16c632967af4577364736f6c634300050a0032"
 
 myContract = eth.contract(abi)
-contract = myContract.new({from:eth.accounts[0],data:bin,gas:66912800}) 
-1000000
+contract = myContract.new({from:eth.accounts[0],data:bin,gas:200000}) 
+
 
 eth.getBlock(73)
-eth.getTransaction("0x5b8f15359a48ea51eba6181d9249e589511bec3aa3b0e4952524bc3c93f29a66")
+eth.getTransaction("0xbc9b9300e630608ddc4a2affca343266e112a1c5192dc1d5241183721cbf2b34")
 
 
 
 #solidity web IDE
 http://remix.ethereum.org/#optimize=false&evmVersion=null
+
+Ropsten Test NetWork
+44B25E5B743D289BD1F9256F5974BF58D9389780B203F57A1704EF70D242E44A
+address: 0xcfb290bdbe0428d13c3408e62b3ae780811b7a70
+balance: 2.00 ether
+
+MetaMask Ether Faucet
+address: 0x81b7e08f65bdf5648606c89998a9cc8164397647
+balance: 96055172.43 ether
+
+transactions
+0xe9ae4ceab2140d1b05284cf4da58bb563a20c340fda6b6c76e6a6675b7bb7729
+0xafed65a6a56c284f010463822cc68a087ce605330b5325fbbe7eedf212b55fb0
