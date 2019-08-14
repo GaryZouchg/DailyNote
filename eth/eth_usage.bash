@@ -33,11 +33,11 @@ geth   --testnet \
        --rpc \
        --rpccorsdomain "*" \
        --rpcapi "db,eth,net,web3,personal,admin,miner,shh,txpool,debug" \
-       --"allow-insecure-unlock" 
+       --"allow-insecure-unlock" console
 
 ./geth attach
 $ geth attach ipc:/some/custom/path
-$ geth attach http://191.168.1.1:8545
+$ geth attach localhost:8545
 $ geth attach ws://191.168.1.1:8546
 
 #RPC接口调用
@@ -83,19 +83,30 @@ bin="0x608060405234801561001057600080fd5b50336000806101000a81548173fffffffffffff
 myContract = eth.contract(abi)
 contract = myContract.new({from:eth.accounts[0],data:bin,gas:200000}) 
 
+#合约调用
 
-eth.getBlock(73)
-eth.getTransaction("0xbc9b9300e630608ddc4a2affca343266e112a1c5192dc1d5241183721cbf2b34")
+//部署直接获取实例， 
+c = web3.eth.contract(abi).new({data:bytecode, from:eth.accounts[0]});
+//已部署的需要abi和合约地址
+c = eth.contract(abi).at(eth.accounts[0])
+c.mint(eth.accounts[0],10000,{from:eth.accounts[0],gas:200000})
 
+// 生成操作码
+c.mint.getData(eth.accounts[0],10000)
 
 
 #solidity web IDE
 http://remix.ethereum.org/#optimize=false&evmVersion=null
 
 Ropsten Test NetWork
+account1
 44B25E5B743D289BD1F9256F5974BF58D9389780B203F57A1704EF70D242E44A
 address: 0xcfb290bdbe0428d13c3408e62b3ae780811b7a70
-balance: 2.00 ether
+
+account2
+4853ACDF65F14B90362A717E3C51BD42DFACA75024A3F6BE43ACD28D5D162D39
+0xAcdDB7083a2194B4500Bca92c8FC288adEdF3fE7
+
 
 MetaMask Ether Faucet
 address: 0x81b7e08f65bdf5648606c89998a9cc8164397647
@@ -104,3 +115,8 @@ balance: 96055172.43 ether
 transactions
 0xe9ae4ceab2140d1b05284cf4da58bb563a20c340fda6b6c76e6a6675b7bb7729
 0xafed65a6a56c284f010463822cc68a087ce605330b5325fbbe7eedf212b55fb0
+
+
+https://ropsten.etherscan.io/tx/0x85cf9ee7a770fdba6d95b6815b239f946b51f611fe244a568b6db99462043c89
+
+
