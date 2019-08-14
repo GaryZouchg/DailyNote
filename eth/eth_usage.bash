@@ -93,7 +93,7 @@ c.mint(eth.accounts[0],10000,{from:eth.accounts[0],gas:200000})
 
 // 生成操作码
 c.mint.getData(eth.accounts[0],10000)
-
+"0x40c10f1900000000000000000000000041e15905617eb0676dad83a805c14fa2d74133ac0000000000000000000000000000000000000000000000000000000000002710"
 
 #solidity web IDE
 http://remix.ethereum.org/#optimize=false&evmVersion=null
