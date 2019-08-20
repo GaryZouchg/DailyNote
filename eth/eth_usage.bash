@@ -86,7 +86,7 @@ contract = myContract.new({from:eth.accounts[0],data:bin,gas:200000})
 #合约调用
 
 //部署直接获取实例， 
-c = web3.eth.contract(abi).new({data:bytecode, from:eth.accounts[0]});
+c = web3.eth.contract(abi).new({data:bin, from:eth.accounts[0]});
 //已部署的需要abi和合约地址
 c = eth.contract(abi).at(eth.accounts[0])
 c.mint(eth.accounts[0],10000,{from:eth.accounts[0],gas:200000})
@@ -106,7 +106,6 @@ address: 0xcfb290bdbe0428d13c3408e62b3ae780811b7a70
 account2
 4853ACDF65F14B90362A717E3C51BD42DFACA75024A3F6BE43ACD28D5D162D39
 0xAcdDB7083a2194B4500Bca92c8FC288adEdF3fE7
-
 
 MetaMask Ether Faucet
 address: 0x81b7e08f65bdf5648606c89998a9cc8164397647
