@@ -9,7 +9,7 @@ usermod -aG sudo me
 sudo apt-get install openssh-server
 sudo apt-get install openssh-client
 service ssh start
-service sshd status
+service sshd 
 
 生成秘钥对
 ssh me@47.52.33.47
