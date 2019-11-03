@@ -23,7 +23,7 @@ chmod +x shadowsocks-all.sh
 ./shadowsocks-all.sh 2>&1 | tee shadowsocks-all.log
 
 Congratulations, Shadowsocks-Python server install completed!
-Your Server IP        :  47.52.33.47 
+Your Server IP        :  47.244.168.212
 Your Server Port      :  2019 
 Your Password         :  ouae2718 
 Your Encryption Method:  aes-256-cfb 
