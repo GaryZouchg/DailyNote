@@ -5,7 +5,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 
-#ctags
+#ctags#######################################################
 wget http://prdownloads.sourceforge.net/ctags/ctags-5.8.tar.gz
 tar xzvf ctags-5.8.tar.gz
 cd ctags-5.8
@@ -14,17 +14,19 @@ make
 sudo make install
 ctags -R  --file-scope=yes  --languages=c,c++ --links=yes --c-kinds=+px --fields=+iaS --extra=+q -f ~/.vim/systags /usr/include /usr/local/include
 ctags -R --c++-kinds=+px --fields=+iaS --extra=+q
----vimrc 
+#---vimrc 
 　map <F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>  
  set tags=tags;set tags+=~/.vim/systags
 
-#Taglist
+#Taglist#######################################################
 git clone https://github.com/vim-scripts/taglist.vim.git  taglist
-
-#Cscope
+cp ~/.vim/downloads/taglist/plugin/* ~/.vim/plugin/
+cp ~/.vim/downloads/taglist/doc/* ~/.vim/doc/
+#---vimrc 
+#Cscope#######################################################
 wget http://cscope.sourceforge.net/cscope_maps.vim
 
-#OmniCppComplete
+#OmniCppComplete#######################################################
 git clone https://github.com/vim-scripts/OmniCppComplete.git
 
 #Supertab
