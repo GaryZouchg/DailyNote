@@ -40,10 +40,7 @@ sudo /usr/local/bin/ssserver -c /etc/shadowsocks-python/config.json -d start
 
 
 npm install -g t-get
- 
-
 磁力链接的下载：
 
 tget 'magnet:?xt=urn:btih:0403fb4728bd788fbcb67e87d6feb241ef38c75a'
-
 magnet:?xt=urn:btih:47376BA66FA562433C8D2CBBE7505764165A1238

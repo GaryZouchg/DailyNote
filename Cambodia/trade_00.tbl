@@ -1,0 +1,9 @@
+  CREATE TABLE IF NOT EXISTS `trade_01`(
+   `operation`             VARCHAR(20) NOT NULL,
+   `cust_name`             VARCHAR(64) NOT NULL,
+   `contact`               VARCHAR(64) NOT NULL,
+   `facebook`      VARCHAR(64) NOT NULL,
+   `passport`              VARCHAR(20) NOT NULL,
+   `test_date`    DATE,
+   PRIMARY KEY ( `test_id` )
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
