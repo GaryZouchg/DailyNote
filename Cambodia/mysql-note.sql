@@ -38,6 +38,10 @@ CREATE USER user2@'%' IDENTIFIED BY 'Cambodia2';
 grant all privileges on DRMNY.TRADE_02 to 'user2'@'%' identified by 'Cambodia2';
 commit;
 
-
-
+--函数
+str_to_date(a.i, '%m/%d/%Y')
+select from date_format('2008-08-08', '%m/%d/%Y') ;
+select now();
+select str_to_date(a.g, '%m/%d/%Y') as date1,str_to_date(a.i, '%m/%d/%Y') as date2 from Cambodia12 a;
+select current_timestamp, current_timestamp(
 
