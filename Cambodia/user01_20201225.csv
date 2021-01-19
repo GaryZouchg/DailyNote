@@ -1,4 +1,4 @@
-a,b,c,d,e,f,g,h,i,j,k,l,m,n,o ,p,q,r
+action,trade_state,cust_name,passport,out_bank_acct,cust_bank_acct,lending_date,lending_amount,due_date,due_interest,repayment_date,repayment_amount,repayment_total,repayment_acct,contact,facebook_acct,comment1,comment2
 新建交易,未到期,Un Rosa,21164123,abc111,xyz001,12/25/2020,120,12/31/2020,36,,,,,969163597,fbacct1,,
 新建交易,未到期,Sok Sery Mol,21321525,abc1887,xyz017,12/25/2020,180,12/31/2020,45,,,,,99948382,fbacct17,,
 新建交易,未到期,PHAN KAKADA,101048686,abc1998,xyz018,12/25/2020,240,1/7/2021,120,,,,,965759607,fbacct18,,
