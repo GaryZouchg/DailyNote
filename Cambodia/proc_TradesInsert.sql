@@ -1,4 +1,4 @@
- DROP PROCEDURE proc_TradeInsert;	
+DROP PROCEDURE proc_TradeInsert;	
 DELIMITER $$
 CREATE PROCEDURE proc_TradeInsert( in fromTbl varchar(32) )
 BEGIN
@@ -11,8 +11,7 @@ BEGIN
 	SET  usr=  right(usr,2) ;
 	SET  instTbl= CONCAT('Trades_',usr);
     
-	SELECT   fromTbl,  instTbl;
-    
+   
     SET   exeSql=
     "	
     REPLACE INTO insert_table_ (action,trade_state,cust_name,passport,out_bank_acct,cust_bank_acct,lending_date,lending_amount,due_date,due_interest,repayment_date,repayment_amount,repayment_total,repayment_acct,contact,facebook_acct,comment1,comment2,last_upd_time) 
@@ -31,7 +30,10 @@ BEGIN
 
     SET  exeSql  = replace(exeSql,'insert_table_', instTbl);
     SET  exeSql  = replace(exeSql,'from_table_',   fromTbl);
-	SELECT  instTbl, fromTbl, exeSql ;
+	SELECT  instTbl,  exeSql ;
+	
+	GRANT ALL   PRIVILEGES            ON `PETTYLOAN`.`user01_test` TO 'user01'@'%' IDENTIFIED BY 'Cambodia01';
+
     
 END$$
 

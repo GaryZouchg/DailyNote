@@ -5,8 +5,8 @@ CREATE PROCEDURE GreetWorld( ) SELECT CONCAT(@greeting,' World') as greeting;
 SET @greeting='Hello';  
  
 drop PROCEDURE GreetWorld;
-select * from mysql.proc where db='DRMNY';
-show procedure status where db='DRMNY';
+select * from mysql.proc where db='PETTYLOAN';
+show procedure status where db='PETTYLOAN';
 show create procedure  proc_TradeInsert;
 --变量名做表名
 DECLARE temp1 varchar(30);
@@ -18,18 +18,21 @@ PREPARE stmt from @sqlStr;
 EXECUTE stmt;
 
 --procedure 权限管理； 
-GRANT ALL   ON *.*                           TO user1@'%'  IDENTIFIED BY 'Cambodia1';
-	--要重新连接
-GRANT SELECT   ON mysql.proc                        TO 'user1'@'%';
-GRANT EXECUTE  ON PROCEDURE DRMNY.proc_TradeInsert  TO 'user1'@'%';
+GRANT SELECT   ON mysql.proc                            TO 'user01'@'%'  IDENTIFIED BY 'Cambodia01';
+GRANT EXECUTE  ON PROCEDURE PETTYLOAN.proc_TradeInsert  TO 'user01'@'%'  IDENTIFIED BY 'Cambodia01';
 flush PRIVILEGES;
 
-revoke all on *.* from user1@'%'
-GRANT EXECUTE  ON DRMNY.*                           TO 'user1'@'%';  --  excute  all procedure
+GRANT SELECT   ON mysql.proc                            TO 'user02'@'%'  IDENTIFIED BY 'Cambodia02';
+GRANT EXECUTE  ON PROCEDURE PETTYLOAN.proc_TradeInsert  TO 'user02'@'%'  IDENTIFIED BY 'Cambodia02';
+flush PRIVILEGES;
+
+
+revoke all on *.* from user01@'%'
+GRANT EXECUTE  ON PETTYLOAN.*                           TO 'user01'@'%';  --  excute  all procedure
 
 --procedure invoke
 
-
+source /home/zj/create_table.sql
 
 
 
