@@ -6,7 +6,7 @@ SET @greeting='Hello';
  
 drop PROCEDURE GreetWorld;
 select * from mysql.proc where db='PETTYLOAN';
-show procedure status where db='PETTYLOAN';
+show procedure status    where db='PETTYLOAN';
 show create procedure  proc_TradeInsert;
 --变量名做表名
 DECLARE temp1 varchar(30);
@@ -17,7 +17,7 @@ set @sqlStr=CONCAT('select * from ',temp1,' limit ',temp2);
 PREPARE stmt from @sqlStr;
 EXECUTE stmt;
 
---procedure 权限管理； 
+--procedure 查看和执行存储过程的权限； 
 GRANT SELECT   ON mysql.proc                            TO 'user01'@'%'  IDENTIFIED BY 'Cambodia01';
 GRANT EXECUTE  ON PROCEDURE PETTYLOAN.proc_TradeInsert  TO 'user01'@'%'  IDENTIFIED BY 'Cambodia01';
 flush PRIVILEGES;
@@ -31,8 +31,9 @@ revoke all on *.* from user01@'%'
 GRANT EXECUTE  ON PETTYLOAN.*                           TO 'user01'@'%';  --  excute  all procedure
 
 --procedure invoke
+sudo mysql -uroot
+source /home/ubuntu/github/DailyNote/Cambodia/grant.sql
 
-source /home/zj/create_table.sql
 
 
 

@@ -1,15 +1,19 @@
 DROP PROCEDURE proc_TradeInsert;	
 DELIMITER $$
-CREATE PROCEDURE proc_TradeInsert( in fromTbl varchar(32) )
+CREATE PROCEDURE proc_TradeInsert( in strDate varchar(32) )
 BEGIN
-	declare usr     varchar(32)     ;
-	declare instTbl varchar(32)     ;
-	declare exeSql  varchar(2048)   ;
+	declare usr           varchar(32)     ;
+	declare usrSuffix     varchar(32)     ;
+	declare instTbl       varchar(32)     ;
+	declare fromTbl       varchar(32)     ;
+	declare exeSql        varchar(2048)   ;
     
     set  usr=( SELECT user());
     set  usr=( SELECT substring_index(usr,"@",1)  );
-	SET  usr=  right(usr,2) ;
-	SET  instTbl= CONCAT('Trades_',usr);
+	SET  usrSuffix=  right(usr,2) ;
+	SET  instTbl= CONCAT('Trades_',right(usr,2));
+	SET  fromTbl= CONCAT(usr,'_');
+	SET  fromTbl= CONCAT(fromTbl,strDate);
     
    
     SET   exeSql=
@@ -30,15 +34,12 @@ BEGIN
 
     SET  exeSql  = replace(exeSql,'insert_table_', instTbl);
     SET  exeSql  = replace(exeSql,'from_table_',   fromTbl);
-	SELECT  instTbl,  exeSql ;
-	
-	GRANT ALL   PRIVILEGES            ON `PETTYLOAN`.`user01_test` TO 'user01'@'%' IDENTIFIED BY 'Cambodia01';
-
-    
+	SELECT  instTbl, fromTbl, exeSql ;
+	   
 END$$
 
 
-call proc_TradeInsert( 'Cambodia01' );
+call proc_TradeInsert( '20201225' );
 truncate TRADE_01;
 
 
