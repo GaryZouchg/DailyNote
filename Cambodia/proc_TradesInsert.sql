@@ -1,8 +1,8 @@
-DROP PROCEDURE proc_TradeInsert;	
+DROP PROCEDURE IF EXISTS proc_TradeInsert;	
 DELIMITER $$
 CREATE PROCEDURE proc_TradeInsert( in strDate varchar(32) )
 BEGIN
-	declare usr           varchar(32)     ;
+	declare usr           varchar(32)     ;	
 	declare usrSuffix     varchar(32)     ;
 	declare instTbl       varchar(32)     ;
 	declare fromTbl       varchar(32)     ;
@@ -23,38 +23,29 @@ BEGIN
 			str_to_date(lending_date, '%m/%d/%Y') ,		lending_amount  ,
 			str_to_date(due_date,     '%m/%d/%Y') ,		due_interest    ,
 			CASE WHEN LENGTH(repayment_date)>5    THEN str_to_date(repayment_date, '%m/%d/%Y') 
-				 ELSE str_to_date('1/1/1970', '%m/%d/%Y')  END ,
+				 ELSE null  END ,
 			CASE WHEN LENGTH(repayment_amount)>=1 THEN repayment_amount
-				 ELSE 0                                    END ,
+				 ELSE null  END ,
 			CASE WHEN LENGTH(repayment_total)>=1  THEN repayment_total
-				 ELSE 0                                    END ,
+				 ELSE null  END ,
 			repayment_acct,contact,facebook_acct,comment1,comment2,now()        
 		FROM from_table_  )
 	";
 
     SET  exeSql  = replace(exeSql,'insert_table_', instTbl);
     SET  exeSql  = replace(exeSql,'from_table_',   fromTbl);
+	SET  exeSql  = CONCAT(exeSql,';');	
+
 	SELECT  instTbl, fromTbl, exeSql ;
+	
+	set @stmtSql = exeSql;
+	PREPARE stmt FROM @stmtSql;   
+    EXECUTE stmt              ;         
+    deallocate prepare stmt   ;
 	   
 END$$
 
 
 call proc_TradeInsert( '20201225' );
-truncate TRADE_01;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+truncate Trades_01;
 
