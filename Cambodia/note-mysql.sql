@@ -43,11 +43,16 @@ GRANT SELECT,INSERT,UPDATE,DELETE ON PETTYLOAN.Trades_02    TO 'user02'@'%'  ;
 --不能模糊匹配表名
 
 commit;
-DROP USER user1
+DROP USER user01;
+DROP USER user02;
 --函数
 str_to_date(a.i, '%m/%d/%Y')
 select from date_format('2008-08-08', '%m/%d/%Y') ;
 select now();
 select str_to_date(a.g, '%m/%d/%Y') as date1,str_to_date(a.i, '%m/%d/%Y') as date2 from Cambodia12 a;
-select current_timestamp, current_timestamp(
+select current_timestamp, current_timestamp()
+
+
+
+
 

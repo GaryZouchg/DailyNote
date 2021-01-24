@@ -18,12 +18,12 @@ PREPARE stmt from @sqlStr;
 EXECUTE stmt;
 
 --procedure 查看和执行存储过程的权限； 
-GRANT SELECT   ON mysql.proc                            TO 'user01'@'%'  IDENTIFIED BY 'Cambodia01';
-	GRANT EXECUTE  ON PROCEDURE PETTYLOAN.proc_TradeInsert  TO 'user01'@'%'  IDENTIFIED BY 'Cambodia01';
-	flush PRIVILEGES;
+GRANT SELECT   ON mysql.proc                            TO 'user01'@'%' ;
+GRANT EXECUTE  ON PROCEDURE PETTYLOAN.proc_TradeInsert  TO 'user01'@'%' ;
+flush PRIVILEGES;
 
-GRANT SELECT   ON mysql.proc                            TO 'user02'@'%'  IDENTIFIED BY 'Cambodia02';
-GRANT EXECUTE  ON PROCEDURE PETTYLOAN.proc_TradeInsert  TO 'user02'@'%'  IDENTIFIED BY 'Cambodia02';
+GRANT SELECT   ON mysql.proc                            TO 'user02'@'%' ;
+GRANT EXECUTE  ON PROCEDURE PETTYLOAN.proc_TradeInsert  TO 'user02'@'%' ;
 flush PRIVILEGES;
 
 
@@ -33,7 +33,7 @@ GRANT EXECUTE  ON PETTYLOAN.*                           TO 'user01'@'%';  --  ex
 --procedure invoke
 sudo mysql -uroot
 source /home/ubuntu/github/DailyNote/Cambodia/grant.sql
-sudo mysql –uroot  -DPETTYLOAN</home/ubuntu/github/DailyNote/Cambodia/grant.sql
+sudo mysql  -DPETTYLOAN</home/ubuntu/github/DailyNote/Cambodia/grant.sql
 
 
 sed -i 's/2020/2021/g' /home/ubuntu/github/DailyNote/Cambodia/grant.sql

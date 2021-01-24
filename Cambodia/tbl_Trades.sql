@@ -1,4 +1,4 @@
-drop table Trades_00;
+DROP TABLE Trades_00;
 CREATE TABLE IF NOT EXISTS Trades_00(
 	action             VARCHAR(10)  NOT NULL  COMMENT '交易操作'    ,
 	trade_state        VARCHAR(10)  NOT NULL  COMMENT '交易状态'    ,
@@ -24,6 +24,18 @@ CREATE TABLE IF NOT EXISTS Trades_00(
 )ENGINE=InnoDB DEFAULT CHARSET=utf8  COMMENT '交易表00';
 
 CREATE INDEX TRADE_00_idx ON Trades_00 (rpmt_date,cust_name);
+
+DROP TABLE Trades_in;
+DROP TABLE Trades_01;
+DROP TABLE Trades_02;
+DROP TABLE Trades_03;
+DROP TABLE Trades_04;
+DROP TABLE Trades_05;
+DROP TABLE Trades_06;
+DROP TABLE Trades_07;
+DROP TABLE Trades_08;
+DROP TABLE Trades_09;
+
 
 CREATE  TABLE IF NOT EXISTS Trades_in (LIKE Trades_00);
 CREATE  TABLE IF NOT EXISTS Trades_01 (LIKE Trades_00);
