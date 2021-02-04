@@ -21,10 +21,10 @@ BEGIN
     REPLACE INTO insert_table_ (action,trade_state,cust_name,passport,lend_from_acct,lend_to_acct,lending_date,lending_amount,due_date,due_interest,rpmt_from_acct,rpmt_to_acct,rpmt_date,rpmt_amount,rpmt_total,contact,facebook_acct,comment1,comment2,update_time) 
 		(SELECT 	
 			action,trade_state,cust_name,passport,lend_from_acct,lend_to_acct,
-			str_to_date(lending_date, '%m/%d/%Y') ,		lending_amount  ,
-			str_to_date(due_date,     '%m/%d/%Y') ,		due_interest    ,
+			str_to_date(lending_date, '%Y/%m/%d') ,		lending_amount  ,
+			str_to_date(due_date,     '%Y/%m/%d') ,		due_interest    ,
 			rpmt_from_acct,rpmt_to_acct,
-			CASE WHEN LENGTH(rpmt_date)>5 THEN str_to_date(rpmt_date, '%m/%d/%Y') 
+			CASE WHEN LENGTH(rpmt_date)>5 THEN str_to_date(rpmt_date, '%Y/%m/%d') 
 				 ELSE null  END ,
 			CASE WHEN LENGTH(rpmt_amount)>=1   THEN rpmt_amount
 				 ELSE null  END ,
